@@ -287,3 +287,49 @@ footer a:focus {
     font-size: 3rem;
   }
 }
+/* ── Logo Styles ── */
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.6rem;               /* space between image and text */
+  font-size: 0;              /* hides any leftover text sizing issues */
+}
+
+.logo-img {
+  height: 32px;              /* mobile size – adjust if your logo needs more/less */
+  width: auto;
+  transition: transform 0.25s ease;
+}
+
+.logo:hover .logo-img,
+.logo:focus .logo-img {
+  transform: scale(1.08);    /* professional subtle hover zoom */
+}
+
+.logo-text {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #e63946;
+}
+
+/* Very small screens: hide text to save space (optional but clean) */
+@media (max-width: 480px) {
+  .logo-text {
+    display: none;
+  }
+  .logo-img {
+    height: 36px;            /* slightly bigger for touch */
+  }
+}
+
+/* Desktop – make it larger and more prominent */
+@media (min-width: 768px) {
+  .logo-img {
+    height: 44px;
+  }
+  .logo-text {
+    font-size: 1.9rem;
+  }
+}
+
