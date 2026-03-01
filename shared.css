@@ -1,4 +1,5 @@
-/* shared.css */
+/* shared.css - Mobile-first + professional responsive version */
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 * {
@@ -12,14 +13,19 @@ body {
   background-color: #ffffff;
   color: #2d3436;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 16px;
 }
 
+/* ───────────────────────────────────────
+   Header & Navigation
+─────────────────────────────────────── */
 header {
   background: #111;
   color: white;
@@ -27,38 +33,56 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .logo {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   font-weight: 700;
   color: #e63946;
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
 }
 
 .nav-links a {
   color: white;
   text-decoration: none;
-  margin-left: 1.5rem;
   font-weight: 500;
+  font-size: 0.98rem;
+  transition: color 0.2s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a:focus {
   color: #e63946;
+  outline: none;
 }
 
+/* Buttons */
 .btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.4rem;
+  border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.2s;
+  font-size: 0.97rem;
+  transition: all 0.22s ease;
+  cursor: pointer;
+  border: none;
 }
 
 .btn-primary {
@@ -66,63 +90,161 @@ nav {
   color: white;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
   background: #d00000;
+  transform: translateY(-1px);
 }
 
 .btn-outline {
+  background: transparent;
   border: 2px solid #e63946;
   color: #e63946;
 }
 
-.btn-outline:hover {
+.btn-outline:hover,
+.btn-outline:focus {
   background: #e63946;
   color: white;
+  transform: translateY(-1px);
 }
 
+/* ───────────────────────────────────────
+   Cards & General Components
+─────────────────────────────────────── */
 .card {
   background: #f8f9fa;
   border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 1.6rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.07);
   margin-bottom: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* ───────────────────────────────────────
+   Hero
+─────────────────────────────────────── */
 .hero {
   background: linear-gradient(135deg, #e63946 0%, #d00000 100%);
   color: white;
   text-align: center;
-  padding: 8rem 2rem 6rem;
+  padding: 7rem 16px 5rem;
 }
 
 .hero h1 {
-  font-size: 3.2rem;
-  margin-bottom: 1rem;
+  font-size: clamp(2.4rem, 6.5vw, 3.6rem);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
 }
 
 .hero p {
-  font-size: 1.3rem;
-  max-width: 700px;
-  margin: 0 auto 2rem;
+  font-size: clamp(1.1rem, 3.5vw, 1.35rem);
+  max-width: 720px;
+  margin: 0 auto 2.2rem;
+  opacity: 0.95;
 }
 
+/* ───────────────────────────────────────
+   Sections & Footer
+─────────────────────────────────────── */
 section {
-  padding: 4rem 0;
+  padding: 4.5rem 0;
 }
 
 footer {
   background: #111;
   color: #aaa;
   text-align: center;
-  padding: 3rem 0 1.5rem;
-  margin-top: 4rem;
+  padding: 3.5rem 0 2rem;
+  margin-top: 5rem;
+  font-size: 0.94rem;
 }
 
 footer a {
   color: #e63946;
   text-decoration: none;
+  transition: color 0.2s;
 }
 
-footer a:hover {
+footer a:hover,
+footer a:focus {
+  color: #ff4d4d;
   text-decoration: underline;
+}
+
+/* ───────────────────────────────────────
+   Mobile-first Responsive Design
+─────────────────────────────────────── */
+
+/* Small phones (portrait) */
+@media (max-width: 480px) {
+  .hero {
+    padding: 5.5rem 16px 4rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+  
+  .hero p {
+    font-size: 1.05rem;
+  }
+  
+  .btn {
+    padding: 0.7rem 1.3rem;
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* Tablets & small desktops */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .nav-links a {
+    font-size: 1.05rem;
+  }
+  
+  .container {
+    padding: 0 20px;
+  }
+  
+  section {
+    padding: 3.5rem 0;
+  }
+}
+
+/* Medium+ desktops */
+@media (min-width: 992px) {
+  .container {
+    padding: 0 32px;
+  }
+  
+  .hero {
+    padding: 10rem 2rem 7rem;
+  }
+  
+  .nav-links {
+    flex-direction: row;
+  }
+}
+
+/* Very large screens */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
 }
